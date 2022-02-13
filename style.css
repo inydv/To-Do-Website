@@ -2,6 +2,8 @@ body{
     margin: 0;
     background-color: #1f1d1c;
     overflow-x: hidden;
+    overflow-y: auto;
+    transition: background-color 2s ease-in-out;
 }
 
 #container{
@@ -36,6 +38,8 @@ h1{
     position: relative;
     color: white;
     font-size: 2em;
+    cursor: pointer;
+    animation: rotate 2s ease-in-out;
 }
 
 #heading{
@@ -56,7 +60,7 @@ h1{
     top: 25%;
 }
 
-#btn{
+.btn{
     background-color: #1f1d1c;
     color: white;
     margin: 0;
@@ -69,7 +73,7 @@ h1{
     user-select: none;
 }
 
-#circle{
+.circle{
     color: white;
     position: absolute;
     top: 15px;
@@ -80,3 +84,17 @@ h1{
 #heading .hidden-icon{
     display: none;
 }
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+/* .darkmode{
+    background-color: white;
+    color: black;
+} */
