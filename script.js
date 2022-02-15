@@ -1,17 +1,15 @@
 const body = document.body
 const hiddenIcon = document.querySelectorAll('.icons')
 
-const addToDo = document.querySelector('#main-2')
+const input = document.getElementById('input')
+const btn = document.getElementById('btn')
+const listContainer = document.getElementById('list-container')
 
-const form = document.querySelectorAll('.form')
+const hides = document.querySelector('.bin')
+const strike = document.querySelector('.strike')
 
-const strike = document.querySelectorAll('.strike')
-const writeContent = document.querySelectorAll('write-content')
-const context = document.querySelector('.context')
-const list = document.getElementsByTagName('li')
+// DARK MODE & Light Mode
 
-
-// DARK MODE
 let darkMode = true
 
 hiddenIcon.forEach(icons => {
@@ -43,30 +41,27 @@ function changeModeToDark(){
     body.style.backgroundColor = '#1f1d1c'
 }
 
+// ADDING LIST
 
-// CLICK TO ADD TYPING BOX
-addToDo.addEventListener('click', () => {
-    const enterText = document.createElement('li')
-    enterText.innerHTML = 
-    `<div class="content">
-    <form class="form">
-        <input class="write-content" type="text" placeholder="Type Here...">
-    </form>
-    <i class="fa-regular fa-trash-can bin"></i>
-    <i class="fa-solid fa-strikethrough strike"></i>
-    </div>`
-    context.appendChild(enterText)
-})
-
-form.addEventListener('submit', (e) => {
-    e.preventdefault()
-
-    localStorage.setItem
+btn.addEventListener('click', () => {
+    let text = input.value;
+    
+    if (text !== "") {
+        let list = document.createElement('li');
+        list.classList.add('content')
+        list.innerHTML = 
+        `<p class="context">${text}</p>
+        <i class="fa-regular fa-trash-can bin"></i>
+        <i class="fa-solid fa-strikethrough strike"></i>`
+        listContainer.insertBefore(list,listContainer.childNodes[0])
+        input.value = ''
+    }
 })
 
 // ADDING STRIKE
-list.forEach(l => {
-    l.addEventListener('click', () => {
-        this.writeContent.classList.add('unactive')
-    })
+
+strike.addEventListener('click', e => {
+    if (e.target.parentElement == 'LI') {
+        e.target.parentElement.childNode[0].classList.toggle('unactive')
+    }
 })

@@ -2,18 +2,21 @@
     margin: 0;
     padding: 0;
     color: white;
+    outline: 0;
 }
 
 body{
     background-color: #1f1d1c;
     overflow-x: hidden;
-    transition: background-color 2s ease-in-out;
+    transition: background-color 1s ease-in-out;
 }
 
 #container{
     width: 100vw;
     height: 100vh;
 }
+
+/* background Image */
 
 #bg{
     background-image: url('Body_image.jpg');
@@ -27,12 +30,16 @@ body{
     z-index: -1;
 }
 
+/* Heading & Icons container */
+
 #heading{
     display: flex;
     justify-content: center;
     position: relative;
     top: 18%;
 }
+
+/* Heading of Page */
 
 h1{
     margin-right: 15%;
@@ -41,10 +48,12 @@ h1{
     user-select: none;
 }
 
+/* Light-Mode & Dark-Mode Icons */
+
 .icons{
     font-size: 2em;
     cursor: pointer;
-    animation: rotate 2s ease-in-out;
+    animation: rotate 1s ease-in-out;
 }
 
 #heading .hidden-icon{
@@ -60,6 +69,8 @@ h1{
     }
 }
 
+/* main container */
+
 #main{
     display: flex;
     flex-direction: column;
@@ -68,30 +79,37 @@ h1{
     top: 25%;
 }
 
-#main-2{
+/* Typing box */
+
+#main-container{
     position: relative;
 }
 
-.btn{
+#input{
     background-color: #1f1d1c;
     border: 1px solid black;
     border-radius: 10px;
     width: 200px;
-    padding: 15px 20px 15px 60px;
+    padding: 15px 60px 15px 15px;
     font-size: 1em;
     user-select: none;
-    cursor: pointer;
+    cursor: text;
 }
 
-.circle{
+/* Submit button of typing box */
+
+#btn{
     position: absolute;
+    height: 20px;
+    width: 20px;
     top: 15px;
-    left: 20px;
-    font-size: 1em;
+    right: 20px;
     cursor: pointer;
 }
 
-.context{
+/* list-container (ul) */
+
+#list-container{
     list-style: none;
 }
 
@@ -99,7 +117,7 @@ h1{
     position: relative;
 }
 
-.write-content{
+.context{
     background-color: #1f1d1c;
     border: 1px solid black;
     border-radius: 10px;
@@ -107,10 +125,11 @@ h1{
     margin-top: 1px;
     padding: 15px 70px 15px 20px;
     font-size: 1em;
-    user-select: none;
-    cursor: text;
+    cursor: default;
     outline: 0;
 }
+
+/* trash icon */
 
 .bin{
     position: absolute;
@@ -120,6 +139,8 @@ h1{
     cursor: pointer;
 }
 
+/* line-through icon */
+
 .strike{
     position: absolute;
     top: 15px;
@@ -128,9 +149,13 @@ h1{
     cursor: pointer;
 }
 
+/* delete selected list */
+
 .undisplay{
     display: none;
 }
+
+/* line-through selected list */
 
 .unactive{
     text-decoration: line-through;
