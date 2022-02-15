@@ -1,10 +1,17 @@
 const body = document.body
 const hiddenIcon = document.querySelectorAll('.icons')
-const btn = document.querySelector('.btn')
-const circle = document.querySelector('.circle')
-const addToDo = document.querySelector('#main-2')
-const main = document.querySelector('#main')
 
+const addToDo = document.querySelector('#main-2')
+
+const form = document.querySelectorAll('.form')
+
+const strike = document.querySelectorAll('.strike')
+const writeContent = document.querySelectorAll('write-content')
+const context = document.querySelector('.context')
+const list = document.getElementsByTagName('li')
+
+
+// DARK MODE
 let darkMode = true
 
 hiddenIcon.forEach(icons => {
@@ -30,18 +37,36 @@ function removeHiddenIcon(){
 
 function changeModeToLight(){
     body.style.backgroundColor = 'White'
-    // btn.classList.toggle('darkmode')
 }
 
 function changeModeToDark(){
     body.style.backgroundColor = '#1f1d1c'
-    // btn.classList.toggle('darkmode')
 }
 
+
+// CLICK TO ADD TYPING BOX
 addToDo.addEventListener('click', () => {
-    const enterText = document.createElement('div')
-    enterText.classList.add('content')
-    enterText.innerHTML = `<input class="write-content" type="text" placeholder="Type Here...">
-    <i class="fa-solid fa-circle-notch circle-2"></i>`
-    main.appendChild(enterText)
+    const enterText = document.createElement('li')
+    enterText.innerHTML = 
+    `<div class="content">
+    <form class="form">
+        <input class="write-content" type="text" placeholder="Type Here...">
+    </form>
+    <i class="fa-regular fa-trash-can bin"></i>
+    <i class="fa-solid fa-strikethrough strike"></i>
+    </div>`
+    context.appendChild(enterText)
+})
+
+form.addEventListener('submit', (e) => {
+    e.preventdefault()
+
+    localStorage.setItem
+})
+
+// ADDING STRIKE
+list.forEach(l => {
+    l.addEventListener('click', () => {
+        this.writeContent.classList.add('unactive')
+    })
 })
