@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     color: white;
     outline: 0;
+    font-family: 'Playfair Display', serif;
 }
 
 body{
@@ -100,11 +103,16 @@ h1{
 
 #btn{
     position: absolute;
-    height: 20px;
-    width: 20px;
-    top: 15px;
+    top: 3px;
     right: 20px;
     cursor: pointer;
+    background-color: #1f1d1c;
+    border: 0;
+    font-size: 2em;
+}
+
+#btn:hover{
+    color: lightblue;
 }
 
 /* list-container (ul) */
@@ -139,9 +147,13 @@ h1{
     cursor: pointer;
 }
 
+.bin:hover{
+    color: lightblue;
+}
+
 /* line-through icon */
 
-.strike{
+.striking{
     position: absolute;
     top: 15px;
     right: 10px;
@@ -149,14 +161,13 @@ h1{
     cursor: pointer;
 }
 
-/* delete selected list */
-
-.undisplay{
-    display: none;
+.striking:hover{
+    color: lightblue;
 }
 
 /* line-through selected list */
 
 .unactive{
     text-decoration: line-through;
+    text-decoration-thickness: 3px ;
 }

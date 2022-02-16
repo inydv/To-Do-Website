@@ -5,8 +5,7 @@ const input = document.getElementById('input')
 const btn = document.getElementById('btn')
 const listContainer = document.getElementById('list-container')
 
-const hides = document.querySelector('.bin')
-const strike = document.querySelector('.strike')
+const context = document.querySelectorAll('.context')
 
 // DARK MODE & Light Mode
 
@@ -43,25 +42,68 @@ function changeModeToDark(){
 
 // ADDING LIST
 
+showTask()
+
 btn.addEventListener('click', () => {
     let text = input.value;
-    
-    if (text !== "") {
+
+    if (text.trim() != 0) {
+
+        let LocalStorage = localStorage.getItem("arr")
+        if(LocalStorage == null) {
+            obj = []
+        }
+        else{
+            obj = JSON.parse(LocalStorage)
+        }
+        obj.push(text)
+        localStorage.setItem("arr", JSON.stringify(obj))
+
+        input.value = ''
+        showTask()
+    }
+    else {
+        alert("Enter Text")
+    }
+})
+
+function showTask(){
+
+    let LocalStorage = localStorage.getItem("arr")
+    if(LocalStorage == null) {
+        obj = []
+    }
+    else{
+        obj = JSON.parse(LocalStorage)
+    }
+
+    listContainer.innerHTML = ''
+
+    obj.forEach((item, index) => {
         let list = document.createElement('li');
         list.classList.add('content')
         list.innerHTML = 
-        `<p class="context">${text}</p>
-        <i class="fa-regular fa-trash-can bin"></i>
-        <i class="fa-solid fa-strikethrough strike"></i>`
+        `<p class="context">${item}</p>
+        <i class="fa-regular fa-trash-can bin" onclick="deleteItem(${index})"></i>
+        <i class="fa-solid fa-strikethrough striking" onclick="strikeItem(${index})"></i>`
         listContainer.insertBefore(list,listContainer.childNodes[0])
-        input.value = ''
-    }
-})
+    })
+}
 
 // ADDING STRIKE
 
-strike.addEventListener('click', e => {
-    if (e.target.parentElement == 'LI') {
-        e.target.parentElement.childNode[0].classList.toggle('unactive')
-    }
-})
+function strikeItem(index) {
+    console.log("YES")
+    // context[index].classList.toggle('unactive')
+}
+
+// Adding bin
+
+function deleteItem(index) {
+    let LocalStorage = localStorage.getItem("arr")
+    obj = JSON.parse(LocalStorage)
+
+    obj.splice(index, 1)
+    localStorage.setItem("arr", JSON.stringify(obj))
+    showTask()
+}
