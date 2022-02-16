@@ -93,8 +93,8 @@ function showTask(){
 // ADDING STRIKE
 
 function strikeItem(index) {
-    console.log("YES")
-    // context[index].classList.toggle('unactive')
+    console.log(index)
+    context[index].classList.toggle('unactive')
 }
 
 // Adding bin

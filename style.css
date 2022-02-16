@@ -141,7 +141,7 @@ h1{
 
 .bin{
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 35px;
     font-size: 1em;
     cursor: pointer;
@@ -155,7 +155,7 @@ h1{
 
 .striking{
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 10px;
     font-size: 1em;
     cursor: pointer;
