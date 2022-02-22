@@ -52,7 +52,13 @@ btn.addEventListener("click", () => {
     } else {
       obj = JSON.parse(LocalStorage);
     }
-    obj.push(text);
+
+    let send = {
+      line: false,
+      mytext: text,
+    };
+
+    obj.push(send);
     localStorage.setItem("arr", JSON.stringify(obj));
 
     input.value = "";
@@ -75,19 +81,37 @@ function showTask() {
   obj.forEach((item, index) => {
     let list = document.createElement("li");
     list.classList.add("content");
-    list.innerHTML = `<p class="context">${item}</p>
+    if (item.line == true) {
+      list.innerHTML = `<p class="context unactive">${item.mytext}</p>
         <i class="fa-regular fa-trash-can bin" onclick="deleteItem(${index})"></i>
         <i class="fa-solid fa-strikethrough striking" onclick="strikeItem(${index})"></i>`;
+    } else {
+      list.innerHTML = `<p class="context">${item.mytext}</p>
+        <i class="fa-regular fa-trash-can bin" onclick="deleteItem(${index})"></i>
+        <i class="fa-solid fa-strikethrough striking" onclick="strikeItem(${index})"></i>`;
+    }
     listContainer.insertBefore(list, listContainer.childNodes[0]);
   });
 }
 
 // ADDING STRIKE
 
-function strikeItem(index){
-    const context = document.querySelectorAll(".context");
-    let idx = context.length - ( index + 1 )
-    context[idx].classList.toggle("unactive")
+function strikeItem(index) {
+  let LocalStorage = localStorage.getItem("arr");
+  obj = JSON.parse(LocalStorage);
+
+  const context = document.querySelectorAll(".context");
+  let idx = context.length - (index + 1);
+
+  if (obj[idx].line == false) {
+    context[idx].classList.add("unactive");
+    obj[idx].line = true;
+    localStorage.setItem("arr", JSON.stringify(obj));
+  } else {
+    context[idx].classList.remove("unactive");
+    obj[idx].line = false;
+    localStorage.setItem("arr", JSON.stringify(obj));
+  }
 }
 
 // Adding bin
